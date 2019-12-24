@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哈皮市场 - 爱贪玩助手</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            padding: 10px;
+        }
+
+        ul, li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .goodsList {
+            font-size: .8em;
+        }
+
+        .goodsList ul {
+            clear: both;
+        }
+
+        .goodsList li {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 190px;
+        }
+
+        .goods-tag {
+            color: green;
+        }
+
+        .goods-desc {
+            font-size: .8em;
+            color: #888;
+            background-color: #f8f8f8;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .goods-detail {
+            font-size: .8em;
+            color: #888;
+        }
+
+        .goods-control {
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px solid #ddd;
+        }
+
+        .goods-buy {
+            color: blue;
+        }
+
+        .goods-score {
+            float: right;
+            color: orange;
+        }
+
+        .goods-statis {
+            padding: 5px 0;
+            color: red;
+        }
+
+        .goods-user {
+            font-size: .7em;
+            color: hotpink;
+        }
+
+        .goods-name {
+            font-size: 1em;
+            font-weight: bold;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+<div class="goodsList">
+    <?php foreach($goodsList2 as $v): ?>
+    <ul>
+        <?php foreach($v['list'] as $goods): ?>
+        <li>
+            <div class="goods-user">
+                <?php
+                    echo "{$goods['user']['nickname']} , {$goods['user']['race_type']}族 {$goods['user']['level_text']}
+                {$goods['user']['level']}级";
+                ?>
+            </div>
+            <span class="goods-name">
+                <?php
+                    echo "{$goods['name']}";
+                ?>
+            </span>
+            <span class="goods-tag">
+                <?php
+                    if($goods['tag']){
+                        echo "[{$goods['tag']}]";
+                    }
+                ?>
+            </span>
+            <span class="goods-score">
+                <?php
+                    if($goods['score']>0){
+                        echo "评分：{$goods['score']}";
+                    }
+                ?>
+            </span>
+            <div class="goods-desc">
+                <?php
+                    echo "{$goods['desc']}";
+                ?>
+            </div>
+            <?php
+                if($goods['type']=='zb' && $goods['detail']):
+            ?>
+            <div class="goods-detail">
+                <?php
+                foreach($goods['detail']['attrs'] as $attr){
+                    echo "<div>{$attr['item']} + {$attr['value']}</div>";
+                }
+                ?>
+            </div>
+            <?php
+                endif;
+            ?>
+            <div class="goods-control">
+                <span><?php echo number_format($goods['price']); ?>金</span> , <span><?php echo number_format($goods['num']); ?>件</span>
+                <div>单价：<?php echo number_format($goods['price'] / $goods['num']); ?>金</div>
+                <div class="goods-statis">
+                    <?php
+                    if(isset($goodsStatis[$goods['name']])){
+                        echo "<div>均价：".(number_format($goodsStatis[$goods['name']]['price_avg']))."金 /
+                        高价率：".round($goods['price']/$goods['num']/$goodsStatis[$goods['name']]['price_avg']*100,2)."%
+                    </div>";
+                    }
+                    ?>
+                </div>
+                <a class="goods-buy" href="javascript:;" onclick="buyGoods(this, '<?php echo $goods['id']; ?>')">购买</a>
+            </div>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <hr>
+    <?php endforeach; ?>
+</div>
+<script src="static/js/jquery.min.js"></script>
+<script>
+    function buyGoods(dom, goods_id) {
+        console.log(goods_id);
+        if (confirm('是否购买此商品？')) {
+            $.post('?s=/transaction/buyGoods', {
+                goods_id: goods_id,
+            }, function (res) {
+                console.log(res);
+                alert(res.msg);
+                if (res.code) {
+                    $(dom).parents('li').fadeOut();
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>
