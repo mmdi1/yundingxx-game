@@ -9,13 +9,13 @@
 
 ## 相关文档
 
- **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E8%90%8C%E6%96%B0%E6%94%BB%E7%95%A5.md">$\color{#FF7D00}{萌新攻略}$</a>**
+**$\color{#FF7D00}{<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E8%90%8C%E6%96%B0%E6%94%BB%E7%95%A5.md">萌新攻略</a>}$**
 
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3.md">基础文档</a>**
  
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E5%90%88%E6%88%90%E8%A1%A8.md">基础合成表</a>**
 
-<a href="https://github.com/GitWingSky/tools">$\color{#FF7D00}{官方认证脚本插件}$</a>
+$\color{#FF7D00}{<a href="https://github.com/GitWingSky/tools">官方认证脚本插件</a>}$
 
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E4%BA%BA%E7%89%A9%E6%8A%80%E8%83%BD.md">人物技能</a>**
 
