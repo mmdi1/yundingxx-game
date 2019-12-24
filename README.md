@@ -9,7 +9,8 @@
 
 ## 相关文档
 
-**$\color{#FF7D00}{<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E8%90%8C%E6%96%B0%E6%94%BB%E7%95%A5.md">萌新攻略</a>}$**
+<span id="jump">萌新攻略</span>
+  [https://github.com/joucksHua/yundingxx-game/blob/master/%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3.md](#jump)
 
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3.md">基础文档</a>**
  
