@@ -18,6 +18,7 @@
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E5%90%88%E6%88%90%E8%A1%A8.md">基础合成表</a>**
 
 <a href="https://github.com/GitWingSky/tools">官方认证脚本插件</a>
+<a href="https://github.com/lt541013990/jsScript-yunding">官方认证脚本插件2</a>
 
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E4%BA%BA%E7%89%A9%E6%8A%80%E8%83%BD.md">人物技能</a>**
 
