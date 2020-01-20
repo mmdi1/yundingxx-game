@@ -17,12 +17,15 @@
  
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E5%90%88%E6%88%90%E8%A1%A8.md">基础合成表</a>**
 
-<a href="https://github.com/GitWingSky/tools">官方认证脚本插件</a>
-<a href="https://github.com/lt541013990/jsScript-yunding">官方认证脚本插件2</a>
-
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E4%BA%BA%E7%89%A9%E6%8A%80%E8%83%BD.md">人物技能</a>**
 
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E7%94%9F%E6%B4%BB%E6%8A%80%E8%83%BD.md">生活技能</a>**
 
  **<a href="https://github.com/joucksHua/yundingxx-game/blob/master/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97.md">开发日志</a>**
  
+## 相关脚本
+- <a href="https://github.com/GitWingSky/tools">官方认证脚本插件</a>
+- <a href="https://github.com/lt541013990/jsScript-yunding">官方认证脚本插件2</a>
+- 背包优化脚本1990
+    - [source](https://github.com/gMan1990/userscripts/blob/master/iYdxx.user.js)
+    - [install](https://raw.githubusercontent.com/gMan1990/userscripts/master/iYdxx.user.js)
