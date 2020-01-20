@@ -3,5 +3,5 @@
 ["角色名2","token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx"],
 ["角色名3","token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx"],
 ["角色名4","token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx"],
-["角色名5","token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx"],
+["角色名5","token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxx"]
 ]
