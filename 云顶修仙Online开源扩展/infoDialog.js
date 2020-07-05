@@ -20,7 +20,7 @@ $('head').append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/elem
 $('.username').append(`
 <div id="newApp">
     <el-dialog :visible.sync="visible" title="个人信息" width='50%' :modal='false' :append-to-body='true'>
-      <el-tabs :tab-position="'left'" style="height: 100%">
+      <el-tabs :tab-position="'left'" style="height: 100%" @tab-click='changeTab'>
         <el-tab-pane label="人物信息">
           <el-row style="text-align: left">
             <el-col :span='6'>
@@ -149,35 +149,35 @@ $('.username').append(`
                       <span>治疗:</span>
                       <span>{{item.restore_damage}}</span>
                     </div>
-                    <div v-if='item.physical_crit !== 0'>
+                    <div v-if='item.physical_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>物理暴击:</span>
                       <span>{{item.physical_crit}}</span>
                     </div>
-                    <div v-if='item.magic_crit !== 0'>
+                    <div v-if='item.magic_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>法术暴击:</span>
                       <span>{{item.magic_crit}}</span>
                     </div>
-                    <div v-if='item.str !== 0'>
+                    <div v-if='item.str !== 0' style='color:green;font-weight:500;'>
                       <span>耐</span>
                       <span>{{item.str}}</span>
                     </div>
-                    <div v-if='item.vit !== 0'>
+                    <div v-if='item.vit !== 0' style='color:green;font-weight:500;'>
                       <span>武</span>
                       <span>{{item.vit}}</span>
                     </div>
-                    <div v-if='item.agi !== 0'>
+                    <div v-if='item.agi !== 0' style='color:green;font-weight:500;'>
                       <span>速</span>
                       <span>{{item.agi}}</span>
                     </div>
-                    <div v-if='item.int !== 0'>
+                    <div v-if='item.int !== 0' style='color:green;font-weight:500;'>
                       <span>魔</span>
                       <span>{{item.int}}</span>
                     </div>
-                    <div v-if='item.con !== 0'>
+                    <div v-if='item.con !== 0' style='color:green;font-weight:500;'>
                       <span>体</span>
                       <span>{{item.con}}</span>
                     </div>
-                    <div v-if='item.skill'>
+                    <div v-if='item.skill' style="color:orchid;">
                       <span>特效</span>
                       <span>{{item.skill}}</span>
                     </div>
@@ -186,7 +186,13 @@ $('.username').append(`
                       <span>{{item.score}}</span>
                     </div>
                   </div>
-                  <div slot="reference">{{item.name}}</div>
+                  <div slot="reference" v-if='item.wear_level >= 50'
+                    style="text-shadow:1px 1px px darkgoldenrod;color:darkgoldenrod;">
+                    {{item.name}}
+                  </div>
+                  <div slot="reference" v-if='item.wear_level < 50'>
+                    {{item.name}}
+                  </div>
                 </el-popover>
                 <!-- 项链 -->
                 <el-popover placement="right" title="装备信息" width="150" trigger="hover" v-if='item.eq_type === 4'>
@@ -210,35 +216,35 @@ $('.username').append(`
                       <span>治疗能力:</span>
                       <span>{{item.restore_damage}}</span>
                     </div>
-                    <div v-if='item.physical_crit !== 0'>
+                    <div v-if='item.physical_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>物理暴击:</span>
                       <span>{{item.physical_crit}}</span>
                     </div>
-                    <div v-if='item.magic_crit !== 0'>
+                    <div v-if='item.magic_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>法术暴击:</span>
                       <span>{{item.magic_crit}}</span>
                     </div>
-                    <div v-if='item.str !== 0'>
+                    <div v-if='item.str !== 0' style='color:green;font-weight:500;'>
                       <span>耐</span>
                       <span>{{item.str}}</span>
                     </div>
-                    <div v-if='item.vit !== 0'>
+                    <div v-if='item.vit !== 0' style='color:green;font-weight:500;'>
                       <span>武</span>
                       <span>{{item.vit}}</span>
                     </div>
-                    <div v-if='item.agi !== 0'>
+                    <div v-if='item.agi !== 0' style='color:green;font-weight:500;'>
                       <span>速</span>
                       <span>{{item.agi}}</span>
                     </div>
-                    <div v-if='item.int !== 0'>
+                    <div v-if='item.int !== 0' style='color:green;font-weight:500;'>
                       <span>魔</span>
                       <span>{{item.int}}</span>
                     </div>
-                    <div v-if='item.con !== 0'>
+                    <div v-if='item.con !== 0' style='color:green;font-weight:500;'>
                       <span>体</span>
                       <span>{{item.con}}</span>
                     </div>
-                    <div v-if='item.skill'>
+                    <div v-if='item.skill' style="color:orchid;">
                       <span>特效</span>
                       <span>{{item.skill}}</span>
                     </div>
@@ -247,7 +253,11 @@ $('.username').append(`
                       <span>{{parseInt(item.score)}}</span>
                     </div>
                   </div>
-                  <div slot="reference">{{item.name}}</div>
+                  <div slot="reference" v-if='item.wear_level >= 50'
+                    style="text-shadow:1px 1px px darkgoldenrod;color:darkgoldenrod;">
+                    {{item.name}}
+                  </div>
+                  <div slot="reference" v-if='item.wear_level < 50'>{{item.name}}</div>
                 </el-popover>
                 <!-- 腰带 -->
                 <el-popover placement="right" title="装备信息" width="150" trigger="hover" v-if='item.eq_type === 5'>
@@ -267,35 +277,35 @@ $('.username').append(`
                       <span>气血:</span>
                       <span>{{parseInt(item.hp_cap)}}</span>
                     </div>
-                    <div v-if='item.physical_crit !== 0'>
+                    <div v-if='item.physical_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>物理暴击:</span>
                       <span>{{item.physical_crit}}</span>
                     </div>
-                    <div v-if='item.magic_crit !== 0'>
+                    <div v-if='item.magic_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>法术暴击:</span>
                       <span>{{item.magic_crit}}</span>
                     </div>
-                    <div v-if='item.str !== 0'>
+                    <div v-if='item.str !== 0' style='color:green;font-weight:500;'>
                       <span>耐</span>
                       <span>{{item.str}}</span>
                     </div>
-                    <div v-if='item.vit !== 0'>
+                    <div v-if='item.vit !== 0' style='color:green;font-weight:500;'>
                       <span>武</span>
                       <span>{{item.vit}}</span>
                     </div>
-                    <div v-if='item.agi !== 0'>
+                    <div v-if='item.agi !== 0' style='color:green;font-weight:500;'>
                       <span>速</span>
                       <span>{{item.agi}}</span>
                     </div>
-                    <div v-if='item.int !== 0'>
+                    <div v-if='item.int !== 0' style='color:green;font-weight:500;'>
                       <span>魔</span>
                       <span>{{item.int}}</span>
                     </div>
-                    <div v-if='item.con !== 0'>
+                    <div v-if='item.con !== 0' style='color:green;font-weight:500;'>
                       <span>体</span>
                       <span>{{item.con}}</span>
                     </div>
-                    <div v-if='item.skill'>
+                    <div v-if='item.skill' style="color:orchid;">
                       <span>特效</span>
                       <span>{{item.skill}}</span>
                     </div>
@@ -304,7 +314,11 @@ $('.username').append(`
                       <span>{{parseInt(item.score)}}</span>
                     </div>
                   </div>
-                  <div slot="reference">{{item.name}}</div>
+                  <div slot="reference" v-if='item.wear_level >= 50'
+                    style="text-shadow:1px 1px px darkgoldenrod;color:darkgoldenrod;">
+                    {{item.name}}
+                  </div>
+                  <div slot="reference" v-if='item.wear_level < 50'>{{item.name}}</div>
                 </el-popover>
               </div>
             </el-col>
@@ -340,35 +354,35 @@ $('.username').append(`
                       <span>气血</span>
                       <span>{{parseInt(item.hp_cap)}}</span>
                     </div>
-                    <div v-if='item.physical_crit !== 0'>
+                    <div v-if='item.physical_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>物理暴击:</span>
                       <span>{{item.physical_crit}}</span>
                     </div>
-                    <div v-if='item.magic_crit !== 0'>
+                    <div v-if='item.magic_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>法术暴击:</span>
                       <span>{{item.magic_crit}}</span>
                     </div>
-                    <div v-if='item.str !== 0'>
+                    <div v-if='item.str !== 0' style='color:green;font-weight:500;'>
                       <span>耐</span>
                       <span>{{item.str}}</span>
                     </div>
-                    <div v-if='item.vit !== 0'>
+                    <div v-if='item.vit !== 0' style='color:green;font-weight:500;'>
                       <span>武</span>
                       <span>{{item.vit}}</span>
                     </div>
-                    <div v-if='item.agi !== 0'>
+                    <div v-if='item.agi !== 0' style='color:green;font-weight:500;'>
                       <span>速</span>
                       <span>{{item.agi}}</span>
                     </div>
-                    <div v-if='item.int !== 0'>
+                    <div v-if='item.int !== 0' style='color:green;font-weight:500;'>
                       <span>魔</span>
                       <span>{{item.int}}</span>
                     </div>
-                    <div v-if='item.con !== 0'>
+                    <div v-if='item.con !== 0' style='color:green;font-weight:500;'>
                       <span>体</span>
                       <span>{{item.con}}</span>
                     </div>
-                    <div v-if='item.skill'>
+                    <div v-if='item.skill' style="color:orchid;">
                       <span>特效</span>
                       <span>{{item.skill}}</span>
                     </div>
@@ -377,7 +391,11 @@ $('.username').append(`
                       <span>{{parseInt(item.score)}}</span>
                     </div>
                   </div>
-                  <div slot="reference">{{item.name}}</div>
+                  <div slot="reference" v-if='item.wear_level >= 50'
+                    style="text-shadow:1px 1px px darkgoldenrod;color:darkgoldenrod;">
+                    {{item.name}}
+                  </div>
+                  <div slot="reference" v-if='item.wear_level < 50'>{{item.name}}</div>
                 </el-popover>
                 <!-- 帽子 -->
                 <el-popover placement="left" title="装备信息" width="150" trigger="hover" v-if='item.eq_type === 3'>
@@ -392,35 +410,35 @@ $('.username').append(`
                         <span>物理防御</span>
                         <span>{{parseInt(item.physical_defense)}}</span>
                       </div>
-                      <div v-if='item.physical_crit !== 0'>
+                      <div v-if='item.physical_crit !== 0' style='color:violet;font-weight:500;'>
                         <span>物理暴击:</span>
                         <span>{{item.physical_crit}}</span>
                       </div>
-                      <div v-if='item.magic_crit !== 0'>
+                      <div v-if='item.magic_crit !== 0' style='color:violet;font-weight:500;'>
                         <span>法术暴击:</span>
                         <span>{{item.magic_crit}}</span>
                       </div>
-                      <div v-if='item.str !== 0'>
+                      <div v-if='item.str !== 0' style='color:green;font-weight:500;'>
                         <span>耐</span>
                         <span>{{item.str}}</span>
                       </div>
-                      <div v-if='item.vit !== 0'>
+                      <div v-if='item.vit !== 0' style='color:green;font-weight:500;'>
                         <span>武</span>
                         <span>{{item.vit}}</span>
                       </div>
-                      <div v-if='item.agi !== 0'>
+                      <div v-if='item.agi !== 0' style='color:green;font-weight:500;'>
                         <span>速</span>
                         <span>{{item.agi}}</span>
                       </div>
-                      <div v-if='item.int !== 0'>
+                      <div v-if='item.int !== 0' style='color:green;font-weight:500;'>
                         <span>魔</span>
                         <span>{{item.int}}</span>
                       </div>
-                      <div v-if='item.con !== 0'>
+                      <div v-if='item.con !== 0' style='color:green;font-weight:500;'>
                         <span>体</span>
                         <span>{{item.con}}</span>
                       </div>
-                      <div v-if='item.skill'>
+                      <div v-if='item.skill' style="color:orchid;">
                         <span>特效</span>
                         <span>{{item.skill}}</span>
                       </div>
@@ -430,7 +448,11 @@ $('.username').append(`
                       </div>
                     </div>
                   </div>
-                  <div slot="reference">{{item.name}}</div>
+                  <div slot="reference" v-if='item.wear_level >= 50'
+                    style="text-shadow:1px 1px px darkgoldenrod;color:darkgoldenrod;">
+                    {{item.name}}
+                  </div>
+                  <div slot="reference" v-if='item.wear_level < 50'>{{item.name}}</div>
                 </el-popover>
                 <!-- 鞋子 -->
                 <el-popover placement="left" title="装备信息" width="150" trigger="hover" v-if='item.eq_type === 6'>
@@ -444,35 +466,35 @@ $('.username').append(`
                       <span>速度</span>
                       <span>{{item.speed}}</span>
                     </div>
-                    <div v-if='item.physical_crit !== 0'>
+                    <div v-if='item.physical_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>物理暴击:</span>
                       <span>{{item.physical_crit}}</span>
                     </div>
-                    <div v-if='item.magic_crit !== 0'>
+                    <div v-if='item.magic_crit !== 0' style='color:violet;font-weight:500;'>
                       <span>法术暴击:</span>
                       <span>{{item.magic_crit}}</span>
                     </div>
-                    <div v-if='item.str !== 0'>
+                    <div v-if='item.str !== 0' style='color:green;font-weight:500;'>
                       <span>耐</span>
                       <span>{{item.str}}</span>
                     </div>
-                    <div v-if='item.vit !== 0'>
+                    <div v-if='item.vit !== 0' style='color:green;font-weight:500;'>
                       <span>武</span>
                       <span>{{item.vit}}</span>
                     </div>
-                    <div v-if='item.agi !== 0'>
+                    <div v-if='item.agi !== 0' style='color:green;font-weight:500;'>
                       <span>速</span>
                       <span>{{item.agi}}</span>
                     </div>
-                    <div v-if='item.int !== 0'>
+                    <div v-if='item.int !== 0' style='color:green;font-weight:500;'>
                       <span>魔</span>
                       <span>{{item.int}}</span>
                     </div>
-                    <div v-if='item.con !== 0'>
+                    <div v-if='item.con !== 0' style='color:green;font-weight:500;'>
                       <span>体</span>
                       <span>{{item.con}}</span>
                     </div>
-                    <div v-if='item.skill'>
+                    <div v-if='item.skill' style="color:orchid;">
                       <span>特效</span>
                       <span>{{item.skill}}</span>
                     </div>
@@ -481,7 +503,11 @@ $('.username').append(`
                       <span>{{parseInt(item.score)}}</span>
                     </div>
                   </div>
-                  <div slot="reference">{{item.name}}</div>
+                  <div slot="reference" v-if='item.wear_level >= 50'
+                    style="text-shadow:1px 1px px darkgoldenrod;color:darkgoldenrod;">
+                    {{item.name}}
+                  </div>
+                  <div slot="reference" v-if='item.wear_level < 50'>{{item.name}}</div>
                 </el-popover>
               </div>
             </el-col>
@@ -521,7 +547,7 @@ $('.username').append(`
                   </el-col>
                 </el-row>
                 <el-row style="line-height: 18px; text-align: left">
-                  <el-col :span='7'>
+                  <el-col :span='6'>
                     <div>
                       <span>成长:</span>
                       <span>{{pat.growing_num}}</span>
@@ -555,7 +581,7 @@ $('.username').append(`
                       <span>{{pat.dodge_zz}}</span>
                     </div>
                   </el-col>
-                  <el-col :span='7'>
+                  <el-col :span='6'>
                     <div>
                       <span>气血:</span>
                       <span>{{parseInt(pat.hp)}}</span>
@@ -589,14 +615,20 @@ $('.username').append(`
                       <span>{{parseInt(pat.speed)}}</span>
                     </div>
                   </el-col>
-                  <el-col :span='5'>
-                    <div v-for='ls in pat.skill' :key='ls.id'>
-                      <el-popover placement="right" width="150" trigger="hover">
-                        <div>{{ls.info}}</div>
-                        <div slot="reference"
-                          style="border: 1px solid #ccc;text-align: center;margin: 5px 0;font-weight: 500;"
-                          :class="[ls.high ? 'nodefau': '']">{{ls.name}}</div>
-                      </el-popover>
+                  <el-col :span='10'>
+                    <div style="display: flex;flex-wrap:wrap">
+                      <div v-for='ls in pat.skill' :key='ls.id'>
+                        <el-popover placement="right" width="150" trigger="hover">
+                          <div>{{ls.info}}</div>
+                          <div slot="reference" v-if='ls.high'
+                            style="border: 1px solid #ccc;text-align: center;margin: 3px 8px;font-weight: 500;color:orchid;width: 78px;">
+                            {{ls.name}}</div>
+                          <div slot="reference" v-else
+                            style="border: 1px solid #ccc;text-align: center;margin: 3px 8px;font-weight: 500;width: 78px;">
+                            {{ls.name}}
+                          </div>
+                        </el-popover>
+                      </div>
                     </div>
                   </el-col>
                 </el-row>
@@ -697,6 +729,12 @@ var app = new Vue({
     },
     showPats(index) {
       this.pat = this.patsList[index]
+    },
+    changeTab(tab) {
+      // console.log(tab);
+      if (tab.label !== '仙途伴侣') {
+        this.pat = {}
+      }
     }
   }
 })
