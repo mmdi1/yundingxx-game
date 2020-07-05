@@ -19,7 +19,7 @@ $('head').append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/elem
 
 $('.username').append(`
 <div id="newApp">
-    <el-dialog :visible.sync="visible" title="个人信息" width='50%' :modal='false' :append-to-body='true'>
+    <el-dialog :visible.sync="visible" title="个人信息" width='80%' :modal='false' :append-to-body='true'>
       <el-tabs :tab-position="'left'" style="height: 100%" @tab-click='changeTab'>
         <el-tab-pane label="人物信息">
           <el-row style="text-align: left">
@@ -734,6 +734,10 @@ var app = new Vue({
       // console.log(tab);
       if (tab.label !== '仙途伴侣') {
         this.pat = {}
+      }
+      if (tab.label !== '武器装备') {
+        this.leftWap = {}
+        this.rightBase = {}
       }
     }
   }
