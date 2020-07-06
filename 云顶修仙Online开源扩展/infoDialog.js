@@ -11,13 +11,15 @@
 // @require      https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js
 // ==/UserScript==
 
-'use strict';
+"use strict";
 
-$('head').append(`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.13.2/lib/theme-chalk/index.css">`)
+$("head").append(
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.13.2/lib/theme-chalk/index.css">`
+);
 
 // unsafeWindow.my = null
 
-$('.username').append(`
+$(".username").append(`
 <div id="newApp">
     <el-dialog :visible.sync="visible" title="个人信息" width='80%' :modal='false' :append-to-body='true'>
       <el-tabs :tab-position="'left'" style="height: 100%" @tab-click='changeTab'>
@@ -639,55 +641,54 @@ $('.username').append(`
       </el-tabs>
     </el-dialog>
   </div>
-    `)
-$('#first').css({
-  'text-align': 'left'
-})
-$('.pats-list').css({
-  'height': '200px',
-  'border': '1px solid #ccc',
-  'text-align': 'center',
-  'width': '100%',
-  'box-sizing': 'border-box'
-})
-$('.leval').css({
-  'width': '50%',
-  'line-height': '30px'
-})
-$('.pats-name').css({
-  'line-height': '30px'
-})
-$('.sort-list').css({
-  'display': 'flex',
-  'cursor': 'pointer',
-  'width': '100%'
-})
-$('.pats-msg').css({
-  'border': '1px solid #ccc',
-  'height': '200px',
-  'padding': '15px',
-  'box-sizing': 'border-box',
-  'margin-left': '-1px'
-})
+    `);
+$("#first").css({
+  "text-align": "left",
+});
+$(".pats-list").css({
+  height: "200px",
+  border: "1px solid #ccc",
+  "text-align": "center",
+  width: "100%",
+  "box-sizing": "border-box",
+});
+$(".leval").css({
+  width: "50%",
+  "line-height": "30px",
+});
+$(".pats-name").css({
+  "line-height": "30px",
+});
+$(".sort-list").css({
+  display: "flex",
+  cursor: "pointer",
+  width: "100%",
+});
+$(".pats-msg").css({
+  border: "1px solid #ccc",
+  height: "200px",
+  padding: "15px",
+  "box-sizing": "border-box",
+  "margin-left": "-1px",
+});
 
-$('.clothes-title').css({
-  'text-align': 'center',
-  'font-weight': '500',
-  'font-size': '16px'
-})
-$('.wap-item').css({
-  'text-align': 'center',
-  'cursor': 'mark',
-  'margin': '8px 0'
-})
-$('.xiuxian-img').css({
-  'text-align': 'center',
-  'width': '50%'
-})
-
+$(".clothes-title").css({
+  "text-align": "center",
+  "font-weight": "500",
+  "font-size": "16px",
+});
+$(".wap-item").css({
+  "text-align": "center",
+  cursor: "mark",
+  margin: "8px 0",
+});
+$(".xiuxian-img").css({
+  "text-align": "center",
+  width: "50%",
+});
 
 var app = new Vue({
-  el: '#newApp',
+  el: "#newApp",
   data: function () {
     return {
       visible: false,
@@ -695,54 +696,52 @@ var app = new Vue({
       userInfo: [],
       leftWap: [],
       rightBase: [],
-      pat: {}
-    }
+      pat: {},
+    };
   },
   methods: {
     show(id) {
-      this.visible = true
-      this.getInfo(id)
+      this.visible = true;
+      this.getInfo(id);
     },
     getInfo(id) {
       axios({
-        url: 'http://yundingxx.com:3366/open/api/getUserInfo',
-        method: 'get',
+        url: "http://yundingxx.com:3366/open/api/getUserInfo",
+        method: "get",
         params: {
-          uid: id
-        }
-      }).then(res => {
+          uid: id,
+        },
+      }).then((res) => {
         // console.log(res);
+        this.leftWap = [];
+        this.rightBase = [];
         // 宠物
-        this.patsList = res.data.data.userPet
+        this.patsList = res.data.data.userPet;
         // 人物
-        this.userInfo = res.data.data.info
+        this.userInfo = res.data.data.info;
         // 装备
-        this.eqs = res.data.data.userEqs
-        this.eqs.map(item => {
+        this.eqs = res.data.data.userEqs;
+        this.eqs.map((item) => {
           if (item.eq_type === 1 || item.eq_type === 4 || item.eq_type === 5) {
-            this.leftWap.push(item)
+            this.leftWap.push(item);
           } else {
-            this.rightBase.push(item)
+            this.rightBase.push(item);
           }
-        })
-      })
+        });
+      });
     },
     showPats(index) {
-      this.pat = this.patsList[index]
+      this.pat = this.patsList[index];
     },
     changeTab(tab) {
       // console.log(tab);
-      if (tab.label !== '仙途伴侣') {
-        this.pat = {}
+      if (tab.label !== "仙途伴侣") {
+        this.pat = {};
       }
-      if (tab.label !== '武器装备') {
-        this.leftWap = {}
-        this.rightBase = {}
-      }
-    }
-  }
-})
+    },
+  },
+});
 
 function showOtherInfoFunc(id) {
-  app.show(id)
+  app.show(id);
 }
